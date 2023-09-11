@@ -1,6 +1,7 @@
 package com.example.djinniparserspring;
 
 import com.example.djinniparserspring.entities.Vacancy;
+import com.example.djinniparserspring.enums.Platform;
 import com.example.djinniparserspring.service.DjinniService;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;
@@ -36,7 +37,9 @@ public class DjinniParserSpringApplication {
                     String vacancy_name = jobItem.select(".job-list-item__link").text();
                     String url = jobItem.select(".job-list-item__link").attr("href");
 
-                    vacancies.add(new Vacancy(vacancy_name, url.replace("/jobs/", "") + url));
+                    vacancies.add(new Vacancy(baseUrl.replace("/jobs/", "") + url, vacancy_name,
+                            null, null, null, null, null, null,
+                            Platform.DJINNI_CO));
                 }
 
                 djinniService.save(vacancies.get(0));

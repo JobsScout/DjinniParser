@@ -1,23 +1,26 @@
 package com.example.djinniparserspring.entities;
 
+import com.example.djinniparserspring.enums.Platform;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
-@Data
+@Entity(name = "vacancies")
+@AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@Getter
+@ToString
 public class Vacancy {
-
     @Id
     private String url;
-    private String vacancy_name;
-
-    public Vacancy(String vacancy_name, String url) {
-        this.vacancy_name = vacancy_name;
-        this.url = url;
-    }
+    private String vacancyName;
+    private String vacancyLevels;
+    private String companyName;
+    private String locations;
+    private String typesOfWork;
+    private String skills;
+    private String additional;
+    private Platform platform;
 }
